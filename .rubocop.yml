@@ -9,3 +9,4 @@ Style/ClassAndModuleChildren:
 AllCops:
   Exclude:
     - 'bin/**/*'
+    - 'vendor/bundle/**/*'
