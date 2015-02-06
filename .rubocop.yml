@@ -1,0 +1,11 @@
+Style/Documentation:
+ Enabled: false
+
+Style/ClassAndModuleChildren:
+  EnforcedStyle: compact
+  Exclude:
+    - 'config/application.rb'
+
+AllCops:
+  Exclude:
+    - 'bin/**/*'
