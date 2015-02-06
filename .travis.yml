@@ -3,7 +3,7 @@ cache: bundler
 before_script:
 - cp config/database.travis.yml config/database.yml
 - cp config/secrets.travis.yml config/secrets.yml
-- undle exec rake db:create
+- bundle exec rake db:create
 - bundle exec rake db:migrate
 - gem install rubocop
 rvm:
