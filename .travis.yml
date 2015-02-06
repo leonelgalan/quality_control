@@ -1,0 +1,16 @@
+language: ruby
+cache: bundler
+before_script:
+- cp config/database.travis.yml config/database.yml
+- cp config/secrets.travis.yml config/secrets.yml
+- undle exec rake db:create
+- bundle exec rake db:migrate
+- gem install rubocop
+rvm:
+- 2.2.0
+script:
+- rubocop .
+- bundle exec rspec
+addons:
+  code_climate:
+    repo_token: d4bbe1e78d8a1ebffec09696c39a1bc479608817294c5d24b23f82309a5cd01f
