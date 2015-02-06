@@ -9,5 +9,6 @@ Style/ClassAndModuleChildren:
 AllCops:
   Exclude:
     - 'db/schema.rb'
+    - 'db/migrate/**/*'
     - 'bin/**/*'
     - 'vendor/bundle/**/*'
