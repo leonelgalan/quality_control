@@ -1,5 +1,5 @@
 class Tool::Brakeman < Tool::Base
-  json_parse_output
+  parse_output
 
   def self.command
     'brakeman --quiet --format=json'

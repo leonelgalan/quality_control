@@ -1,11 +1,11 @@
 class Tool::Base
-  def self.json_parse_output
-    @parse_json = true
+  def self.parse_output
+    @parse = true
   end
 
   def self.run(folder)
     output = `cd #{folder} && #{command}`
-    output = parse(output) if @parse_json
+    output = parse(output) if @parse
     output
   end
 
