@@ -9,7 +9,15 @@ gem 'jquery-rails'
 gem 'turbolinks'
 gem 'jbuilder', '~> 2.0'
 
+gem 'attr_encrypted'
 gem 'devise'
+gem 'omniauth-github'
+gem 'octokit'
+
+gem 'rubocop'
+gem 'flog', require: false
+gem 'flay'
+gem 'brakeman'
 
 # gem 'unicorn'
 # gem 'capistrano-rails', group: :development
@@ -21,6 +29,7 @@ group :development, :test do
 
   gem 'rspec-rails', '~> 3.2.0'
   gem 'factory_girl_rails'
+  gem 'guard-rspec', require: false
 end
 
 group :test do
