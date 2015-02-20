@@ -7,17 +7,23 @@ class RepoAnalizer
     @archive = "#{repo.parameterize}.tar.gz"
   end
 
-  def run!(tools = %i(rubocop flog flay brakeman))
-    download!
-    read_folder
-    untar
-    run_tools! tools
-    delete
+  def run(tools = %i(rubocop flog flay brakeman reek))
+    download_code_temporarily do
+      run_tools(tools)
+    end
 
     @output
   end
 
   private
+
+  def download_code_temporarily
+    download
+    read_folder
+    untar
+    yield
+    delete
+  end
 
   def client
     @client ||= Octokit::Client.new(access_token: @oauth_token)
@@ -33,7 +39,7 @@ class RepoAnalizer
     raise NotImplementedError, "#{tool} hasn't been implemented"
   end
 
-  def download!
+  def download
     # -s, --silent Silent or quiet mode. Don't show progress meter or error
     #              messages.  Makes Curl mute. It will still output the data you
     #              ask for, potentially even to the terminal/stdout unless you
@@ -56,7 +62,7 @@ class RepoAnalizer
     `tar -xf #{@archive}`
   end
 
-  def run_tools!(tools)
+  def run_tools(tools)
     @output = tools.each_with_object({}) do |tool, memo|
       memo[tool] = tool_class(tool).run(@folder)
       memo

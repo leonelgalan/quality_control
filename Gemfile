@@ -18,6 +18,7 @@ gem 'rubocop'
 gem 'flog', require: false
 gem 'flay'
 gem 'brakeman'
+gem 'reek'
 
 # gem 'unicorn'
 # gem 'capistrano-rails', group: :development

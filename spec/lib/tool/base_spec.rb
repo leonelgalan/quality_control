@@ -9,7 +9,7 @@ describe Tool::Base do
 
   describe '.parse' do
     it 'parses json into a hash' do
-      expect(subject.class.parse '{"foo": "bar"}').to eq({'foo' => 'bar'})
+      expect(subject.class.parse '{"foo": "bar"}').to eq('foo' => 'bar')
     end
 
     it 'returns an empty hash when output is not valid json' do

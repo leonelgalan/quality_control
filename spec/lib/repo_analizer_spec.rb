@@ -7,7 +7,7 @@ describe RepoAnalizer do
   let(:test_archive) { 'archive.tar.gz' }
   let(:tools) { [:rubocop] }
 
-  describe '#run!' do
+  describe '#run' do
     before do
       analizer.instance_variable_set :@archive, test_archive
       allow(analizer).to receive(:archive_link) do
@@ -16,11 +16,11 @@ describe RepoAnalizer do
     end
 
     it 'returns a hash with the tools' do
-      expect(analizer.run!(tools).class).to be Hash
+      expect(analizer.run(tools).class).to be Hash
     end
 
     it 'should return keys for each tool passed' do
-      expect(analizer.run! tools).to have_key tools.first
+      expect(analizer.run tools).to have_key tools.first
     end
   end
 
@@ -100,7 +100,7 @@ describe RepoAnalizer do
       it 'should call run on given tools' do
         expect(tool_class).to receive(:run).with(folder)
 
-        analizer.send :run_tools!, tools
+        analizer.send :run_tools, tools
       end
     end
   end
