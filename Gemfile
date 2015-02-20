@@ -17,7 +17,7 @@ gem 'octokit'
 gem 'rubocop'
 gem 'flog', require: false
 gem 'flay'
-gem 'brakeman'
+gem 'brakeman', '~> 3.0.1'
 gem 'reek'
 
 # gem 'unicorn'
